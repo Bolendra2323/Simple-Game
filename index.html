@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <!-- Link to the index.css file
+        E.g. search for "how to link to css from html" 
+    Here in the below line we are setting up the relation between the body and the cascading style sheet(css) using rel
+    and  The href attribute specifies the URL of the page the link goes to here the link is index.css
+    -->
+    <link rel="stylesheet" href="index.css">
+
+    <body>
+        <h1>Black-Jack</h1>
+        <p id="message-el">Want to Play Next Round?</p>
+        <p id="card-el">Cards: </p>
+        <p id="sum-el">Sum: </p>
+        <!--  Create a button that says START GAME. 
+        Make it call a startGame() function when clicked -->
+
+        <button onclick="startGame()">START GAME</button>
+
+        <!-- 1. Create a NEW CARD button, make it run newCard() on click -->
+
+        <button onclick="newCard()">NEW CARD</button>
+        <script src="index.js"></script>
+    </body>
+</head>
+
+</html>
