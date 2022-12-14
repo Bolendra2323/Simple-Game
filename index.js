@@ -24,10 +24,19 @@ let cardEl = document.getElementById("card-el");
 // element by its ID.Generally, you should opt for the selector that most clearly gets the job done
 
 
-// 1. Create a function, getRandomCard(), that always returns the number 5
+// Make this function return a random number between 1 and 13
 
 function getRandomCard() {
-    return 5;
+    let randomNumber = Math.floor(Math.random() * 13) + 1;
+    //randomNumber>10 signify we are getting Q,J,K
+    if (randomNumber > 10) {
+        return 10
+            //randomNumber===1 signify we are getting A
+    } else if (randomNumber === 1) {
+        return 11
+    } else {
+        return randomNumber;
+    }
 }
 
 function startGame() {
@@ -40,7 +49,6 @@ function renderGame() {
     for (let i = 0; i < cards.length; i++) {
         cardEl.textContent += ' ' + cards[i];
     }
-
 
     sumEl.textContent = "Sum: " + sum
 
