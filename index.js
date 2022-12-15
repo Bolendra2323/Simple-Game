@@ -1,21 +1,25 @@
 //====================================================ACTUAL-TASK-HAPPENING==============================================================================================
-
-// 2. Use getRandomCard() to set the values of firstCard and secondCard
-
-
-let firstCard = getRandomCard();
-let secondCard = getRandomCard();
-let cards = [firstCard, secondCard]; //array of cards---> ordered list of items
-let sum = firstCard + secondCard
+// 2. Create the player object. Give it two keys, name and chips, and set their values
+let player = {
+    name: "Bolendra",
+    chips: 125
+}
+let cards = [];
+let sum = 0
 let hashBlackJack = false;
 
-let isAlive = true;
+let isAlive = false;
 
 let message = '';
 
 let messageEl = document.getElementById("message-el");
 let sumEl = document.querySelector("#sum-el");
 let cardEl = document.getElementById("card-el");
+// 3. Grab ahold of the player-el paragraph and store it in a variable called playerEl
+let playerEl = document.getElementById("player-el");
+// 4. Render the player's name and chips in playerEl
+
+playerEl.textContent += player.name + ": $" + player.chips
 
 // What is the difference between getElementById and querySelector?
 // With a querySelector statement, you can select an element based on a CSS selector.
@@ -31,7 +35,7 @@ function getRandomCard() {
     //randomNumber>10 signify we are getting Q,J,K
     if (randomNumber > 10) {
         return 10
-            //randomNumber===1 signify we are getting A
+            //randomNumber===1 signify we are getting Ace or A
     } else if (randomNumber === 1) {
         return 11
     } else {
@@ -40,6 +44,12 @@ function getRandomCard() {
 }
 
 function startGame() {
+    isAlive = true;
+    let firstCard = getRandomCard();
+    let secondCard = getRandomCard();
+
+    sum = firstCard + secondCard;
+    cards = [firstCard, secondCard];
     return renderGame();
 }
 
@@ -67,11 +77,12 @@ function renderGame() {
 }
 
 function newCard() {
-    // 3. Use the getRandomCard() to set the value of card
-
-    let card = getRandomCard();
-    sum += card;
-    cards.push(card);
-    console.log(cards);
-    renderGame();
+    // Only allow the player to get a new card if she IS alive and does NOT have a Blackjack
+    if (isAlive === true && hashBlackJack === false) {
+        let card = getRandomCard();
+        sum += card;
+        cards.push(card);
+        console.log(cards);
+        renderGame();
+    }
 }
